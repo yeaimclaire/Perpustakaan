@@ -4,35 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Buku</title>
+    <title>Data Kelas</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
-    <?php
+<?php
     include "navbar.php";
     ?>
     <br><br>
     <div class="container">
         <div class="card">
             <div class="card-header">
-    <h1 class= "text-center">Data Buku</h1>
-        <form action="tampil_buku.php" method="POST" class="d-flex">
-        <input class="form-control me-2" type="search" name="cari" placeholder="Search" aria-label="Search">
+    <h1 class= "text-center">Data Kelas</h1>
+        <form action="tampil_kelas.php" method="POST" class="d-flex">
+            <input class="form-control me-2" type="search" name="cari" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        </div>
+    </div>
     <div class="card-body">
         <table class="table table-dark table-striped">
     <thead>
         <tr>
-            <th scope="col">ID Buku</th>
-            <th scope="col">Nama Buku</th>
-            <th scope="col">Pengarang</th>
-            <th scope="col">Deskripsi</th>
-            <th scope="col">Foto</th>
+            <th scope="col">ID Kelas</th>
+            <th scope="col">Nama Kelas</th>
+            <th scope="col">Kelompok</th>
             <th scope="col">Aksi</th>
-
 
         </tr>
   </thead>
@@ -42,23 +39,21 @@
       if (isset($_POST["cari"])) {
           //jika ada keyword pencarian
           $cari = $_POST['cari'];
-          $qry_buku = mysqli_query($koneksi, "select * from buku where id_buku='$cari' or nama_buku like'%$cari%' or pengarang like'%$cari%'");
+          $qry_kelas = mysqli_query($koneksi, "select * from kelas where id_kelas='$cari' or nama_kelas like'%$cari%'");
       }
       else {
-      $qry_buku=mysqli_query($koneksi,"select * from buku");
+      $qry_kelas=mysqli_query($koneksi,"select * from kelas");
       }
 
-      while($data_buku=mysqli_fetch_array($qry_buku)){
+      while($data_kelas=mysqli_fetch_array($qry_kelas)){
       ?>
         <tr>
-            <td><?php echo $data_buku["id_buku"]; ?></td>
-            <td><?php echo $data_buku["nama_buku"]; ?></td>
-            <td><?php echo $data_buku["pengarang"]; ?></td>
-            <td><?php echo $data_buku["deskripsi"]; ?></td>
-            <td><img src="foto/<?=$data_buku['foto']?>"style="width: 120px;float: left;margin-bottom: 5px;"></td>
+            <td><?php echo $data_kelas["id_kelas"]; ?></td>
+            <td><?php echo $data_kelas["nama_kelas"]; ?></td>
+            <td><?php echo $data_kelas["kelompok"]; ?></td>
             <td>
-            <a href="ubah_buku.php?id_buku=<?=$data_buku['id_buku']?>" class="btn btn-success">Ubah</a>
-            <a href="hapus_buku.php?id_buku=<?=$data_buku['id_buku']?>"
+            <a href="ubah_kelas.php?id_kelas=<?=$data_kelas['id_kelas']?>" class="btn btn-success">Ubah</a>
+            <a href="hapus_kelas.php?id_kelas=<?=$data_kelas['id_kelas']?>"
             onclick="return confirm('Apakah anda yakin menghapus data ini?')" class="btn btn-danger">Hapus</a></td>
         </tr>
     <?php
@@ -66,7 +61,7 @@
     ?>
   </tbody>
 </table>
-    <td><a href="tambah_buku.php" class="btn btn-secondary">Tambah Buku</a></td>
+    <td><a href="tambah_kelas.php" class="btn btn-secondary">Tambah Kelas</a></td>
     </div>
         </div>
     </div>

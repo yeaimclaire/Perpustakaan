@@ -11,22 +11,22 @@
     <div class="p-5 mb-4 bg-dark text-white">
         <div class="container">
         <h1 class="text-center">Tambah Buku</h1>
-        <form method ="POST" action="proses_tambah_buku.php">
+        <form method ="POST" action="proses_tambah_buku.php" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="nama_buku" class="form-label">Nama Buku</label>
-                <input type="text" class="form-control" name="nama_buku" placeholder="Masukkan Nama Buku">
+                <input type="text" class="form-control" name="nama_buku" placeholder="Masukkan Nama Buku" required>
             </div>
             <div class="mb-3">
                 <label for="pengarang" class="form-label">Pengarang</label>
-                <input type="text" class="form-control" name="pengarang" placeholder="Masukkan Pengarang">
+                <input type="text" class="form-control" name="pengarang" placeholder="Masukkan Nama Pengarang" required>
             </div>
             <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                <textarea name="deskripsi" class="form-control" rows="4" placeholder="Masukkan Deskripsi"></textarea>
+                <textarea name="deskripsi" class="form-control" rows="4" placeholder="Masukkan Deskripsi Buku" required></textarea>
             </div>
             <div class="mb-3">
                 <label for="foto" class="form-label">Foto</label>
-                <input class="form-control" type="file" name="foto">
+                <input type="file" class="form-control" name="foto" required>
             </div>
             <button type="submit" class="btn btn-secondary">Submit</button>
         </form>
